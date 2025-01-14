@@ -2,21 +2,6 @@ return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   config = function()
-    local parsers = require("nvim-treesitter.parsers").get_parser_configs()
-
-    ---@diagnostic disable-next-line: inject-field
-    parsers.impex = {
-
-      install_info = {
-
-        url = "local",
-
-        files = { "impex.so" },
-      },
-
-      filetype = "impex",
-    }
-
     local configs = require("nvim-treesitter.configs")
 
     ---@diagnostic disable-next-line: missing-fields
