@@ -11,11 +11,14 @@ require("core.lazy")
 
 -- [[ Setting options ]]
 
-vim.opt.shiftwidth = 2
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+
+vim.hl = vim.highlight
 
 -- [[ Basic Keymaps ]]
 

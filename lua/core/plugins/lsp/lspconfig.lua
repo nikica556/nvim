@@ -1,6 +1,7 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
+    "saghen/blink.cmp",
     {
       "folke/lazydev.nvim",
       ft = "lua", -- only load on lua files
@@ -17,9 +18,12 @@ return {
   },
   config = function()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
 
     local servers = {
       lua_ls = {},
+      ts_ls = {},
+      angularls = {},
     }
 
     local ensure_installed = vim.tbl_keys(servers or {})

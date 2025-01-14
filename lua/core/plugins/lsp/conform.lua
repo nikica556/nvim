@@ -20,6 +20,8 @@ return { -- Autoformat
     formatters_by_ft = {
       lua = { "stylua" },
       html = { "prettier" },
+      typescript = { "prettier" },
+      javascript = { "prettier" },
     },
   },
 }

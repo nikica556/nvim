@@ -2,11 +2,38 @@ return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   config = function()
+    local parsers = require("nvim-treesitter.parsers").get_parser_configs()
+
+    ---@diagnostic disable-next-line: inject-field
+    parsers.impex = {
+
+      install_info = {
+
+        url = "local",
+
+        files = { "impex.so" },
+      },
+
+      filetype = "impex",
+    }
+
     local configs = require("nvim-treesitter.configs")
 
     ---@diagnostic disable-next-line: missing-fields
     configs.setup({
-      ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "html", "sql" },
+      ensure_installed = {
+        "c",
+        "lua",
+        "vim",
+        "vimdoc",
+        "query",
+        "javascript",
+        "typescript",
+        "angular",
+        "html",
+        "sql",
+      },
+
       sync_install = false,
       highlight = {
         enable = true,
@@ -18,6 +45,7 @@ return {
           end
         end,
       },
+
       indent = { enable = true },
     })
   end,

@@ -18,16 +18,15 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Setup lazy.nvim
-require("lazy").setup{
+require("lazy").setup({
   {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme "tokyonight"
-    end
+      vim.cmd.colorscheme("tokyonight")
+    end,
   },
-  { "christoomey/vim-tmux-navigator" },
-  { "tpope/vim-fugitive" },
+  { import = "core.plugins.lsp" },
   { import = "core.plugins" },
-}
+})
