@@ -4,6 +4,7 @@ return {
   branch = "0.1.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
+    "N1kica/telescope-changed-files",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
   },
@@ -21,6 +22,8 @@ return {
     vim.keymap.set("n", "<leader>sn", function()
       builtin.find_files({ cwd = vim.fn.stdpath("config") })
     end, { desc = "[S]earch [N]eovim files" })
+
+    vim.keymap.set("n", "<leader>sc", "<CMD>Telescope changed_files<CR>")
 
     require("core.telescope.multigrep").setup()
   end,

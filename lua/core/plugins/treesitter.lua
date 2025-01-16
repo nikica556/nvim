@@ -17,6 +17,7 @@ return {
         "angular",
         "html",
         "sql",
+        "rust",
       },
 
       sync_install = false,
