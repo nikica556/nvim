@@ -5,4 +5,7 @@ vim.filetype.add({
   filename = {
     [".impex"] = "impex",
   },
+  pattern = {
+    [".*%.component%.html"] = "htmlangular",
+  },
 })
