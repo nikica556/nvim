@@ -6,12 +6,12 @@ return {
 
     local colors = {
       blue = "#82AAFF", -- Light blue, more in line with TokyoNight's style
-      green = "#7FFFD4", -- Aquamarine green, more subtle
+      green = "#4fd6be", -- Aquamarine green, more subtle
       violet = "#BB80B3", -- Muted violet to maintain a consistent look with TokyoNight
-      yellow = "#F9EE98", -- Light yellowish tone, more refined
+      yellow = "#ff966c", -- Light yellowish tone, more refined
       red = "#F28FAD", -- Soft red, keeping the TokyoNight vibe
       fg = "#D0D0D0", -- Light foreground for contrast
-      bg = "#2A2E40", -- Darker background, as seen in TokyoNight
+      bg = "NONE", -- Darker background, as seen in TokyoNight
       inactive_bg = "#212330", -- Slightly lighter dark background for inactive elements
     }
 

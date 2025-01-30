@@ -14,7 +14,18 @@ return {
     { "williamboman/mason.nvim", opts = {} },
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    { "j-hui/fidget.nvim", opts = {} },
+    "nvim-java/nvim-java",
+    {
+      "j-hui/fidget.nvim",
+      opts = {
+        notification = {
+          window = {
+            winblend = 0,
+            y_padding = 0.5,
+          },
+        },
+      },
+    },
   },
   config = function()
     vim.api.nvim_create_autocmd("LspAttach", {
@@ -62,6 +73,45 @@ return {
           local server = servers[server_name] or {}
           server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
           require("lspconfig")[server_name].setup(server)
+        end,
+        jdtls = function()
+          require("java").setup({
+            -- Your custom jdtls settings goes here
+          })
+
+          require("lspconfig").jdtls.setup({
+            -- Your custom nvim-java configuration goes here
+            settings = {
+              java = {
+                configuration = {
+                  runtimes = {
+                    {
+                      name = "JavaSE-17",
+                      path = "/Library/Java/JavaVirtualMachines/sapmachine-17.jdk/Contents/Home",
+                      default = true,
+                    },
+                  },
+                },
+              },
+              jdtls = {
+                cmd = {
+                  "java",
+                  "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+                  "-Declipse.product=org.eclipse.jdt.ls.core.product",
+                  vim.fn.glob(
+                    vim.fn.stdpath("data")
+                      .. "/lazy/eclipse.jdt.ls/"
+                      .. "org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_*.jar"
+                  ),
+                  "-configuration",
+                  vim.fn.stdpath("data")
+                    .. "/lazy/eclipse.jdt.ls/"
+                    .. "org.eclipse.jdt.ls.product/target/repository/config_mac_arm",
+                  "-data",
+                },
+              },
+            },
+          })
         end,
       },
     })

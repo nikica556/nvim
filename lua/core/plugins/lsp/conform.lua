@@ -22,6 +22,7 @@ return { -- Autoformat
       html = { "prettier" },
       typescript = { "prettier" },
       javascript = { "prettier" },
+      scss = { "prettier" },
     },
   },
 }
