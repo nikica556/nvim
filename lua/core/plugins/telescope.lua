@@ -24,8 +24,22 @@ return {
       builtin.find_files({ cwd = vim.fn.stdpath("config") })
     end, { desc = "[S]earch [N]eovim files" })
 
+    vim.keymap.set("n", "<leader>so", function()
+      local obsidian_paths = {
+        vim.fn.expand("~/vaults/personal"),
+        vim.fn.expand("~/vaults/work"),
+      }
+
+      builtin.find_files({
+        prompt_title = "Search Obsidian Files",
+        search_dirs = obsidian_paths,
+        find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+      })
+    end, { desc = "[S]earch [O]bsidian files" })
+
     vim.keymap.set("n", "<leader>sc", "<CMD>Telescope changed_files<CR>", { desc = "[S]earch [C]handed Files" })
 
     require("core.telescope.multigrep").setup()
+    require("core.telescope.hybrisgrep").setup()
   end,
 }

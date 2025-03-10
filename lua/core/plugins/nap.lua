@@ -66,6 +66,9 @@ local cur_file_index = function(files)
 end
 
 vim.keymap.set("n", "<C-n>", function()
+  if vim.api.nvim_win_get_config(0).relative ~= "" then
+    return
+  end
   local dir_path = get_dir_path()
   local files = get_files(dir_path)
   if files == nil then
@@ -80,6 +83,9 @@ vim.keymap.set("n", "<C-n>", function()
 end, { desc = "Prev File" })
 
 vim.keymap.set("n", "<C-p>", function()
+  if vim.api.nvim_win_get_config(0).relative ~= "" then
+    return
+  end
   local dir_path = get_dir_path()
   local files = get_files(dir_path)
   if files == nil then

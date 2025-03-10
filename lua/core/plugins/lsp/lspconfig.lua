@@ -14,7 +14,6 @@ return {
     { "williamboman/mason.nvim", opts = {} },
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    "nvim-java/nvim-java",
     {
       "j-hui/fidget.nvim",
       opts = {
@@ -56,6 +55,8 @@ return {
       lua_ls = {},
       ts_ls = {},
       angularls = {},
+      eslint = {},
+      rust_analyzer = {},
     }
 
     local ensure_installed = vim.tbl_keys(servers or {})
@@ -73,45 +74,6 @@ return {
           local server = servers[server_name] or {}
           server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
           require("lspconfig")[server_name].setup(server)
-        end,
-        jdtls = function()
-          require("java").setup({
-            -- Your custom jdtls settings goes here
-          })
-
-          require("lspconfig").jdtls.setup({
-            -- Your custom nvim-java configuration goes here
-            settings = {
-              java = {
-                configuration = {
-                  runtimes = {
-                    {
-                      name = "JavaSE-17",
-                      path = "/Library/Java/JavaVirtualMachines/sapmachine-17.jdk/Contents/Home",
-                      default = true,
-                    },
-                  },
-                },
-              },
-              jdtls = {
-                cmd = {
-                  "java",
-                  "-Declipse.application=org.eclipse.jdt.ls.core.id1",
-                  "-Declipse.product=org.eclipse.jdt.ls.core.product",
-                  vim.fn.glob(
-                    vim.fn.stdpath("data")
-                      .. "/lazy/eclipse.jdt.ls/"
-                      .. "org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_*.jar"
-                  ),
-                  "-configuration",
-                  vim.fn.stdpath("data")
-                    .. "/lazy/eclipse.jdt.ls/"
-                    .. "org.eclipse.jdt.ls.product/target/repository/config_mac_arm",
-                  "-data",
-                },
-              },
-            },
-          })
         end,
       },
     })
