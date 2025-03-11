@@ -17,6 +17,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
+vim.opt.conceallevel = 1
 
 vim.hl = vim.highlight
 
