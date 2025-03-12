@@ -160,6 +160,8 @@ return {
           "facades",
           "controllers",
           "populators",
+          "services",
+          "XMLs",
           "DAOs",
         }
         vim.ui.select(choices, {
@@ -185,6 +187,14 @@ return {
               populators = {
                 dir = "~/goHy2/core-customize/hybris/bin/custom/gorenje/ggfacades/src/si/zenlab/gg/facades/populators",
                 search = "public class.*",
+              },
+              services = {
+                dir = "~/goHy2/core-customize/hybris/bin/custom/gorenje/ggcore/src/si/zenlab/gg/core/service/impl",
+                search = "public.*",
+              },
+              XMLs = {
+                dir = "~/goHy2/core-customize/hybris/bin/custom/gorenje/ggcore/resources/ggcore-items.xml",
+                search = "(type|attribute).*",
               },
             }
             Snacks.picker.grep({
