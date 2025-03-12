@@ -2,11 +2,13 @@ return {
   "folke/snacks.nvim",
   ---@type snacks.Config
   opts = {
-    picker = {
-      -- your picker configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
+    picker = {},
+    image = {
+      convert = {
+        notify = false,
+      },
     },
+    notifier = {},
   },
   keys = {
     {
@@ -33,7 +35,7 @@ return {
     {
       "<leader>sc",
       function()
-        Snacks.picker.git_status()
+        Snacks.picker.git_diff()
       end,
       desc = "[S]earch [C]hanges",
     },
@@ -59,7 +61,7 @@ return {
       desc = "Search for Plugin Spec",
     },
     {
-      "<leader>sh",
+      "<leader>sH",
       function()
         Snacks.picker.help()
       end,
@@ -143,6 +145,56 @@ return {
         Snacks.picker.lsp_workspace_symbols()
       end,
       desc = "LSP Workspace Symbols",
+    },
+    {
+      "<leader>sS",
+      function()
+        Snacks.picker.lsp_workspace_symbols()
+      end,
+      desc = "LSP Workspace Symbols",
+    },
+    {
+      "<leader>sh",
+      function()
+        local choices = {
+          "facades",
+          "controllers",
+          "populators",
+          "DAOs",
+        }
+        vim.ui.select(choices, {
+          prompt = "Select a directory:",
+          format_item = function(item)
+            return item
+          end,
+        }, function(choice)
+          if choice then
+            local searches = {
+              controllers = {
+                dir = "~/goHy2/core-customize/hybris/bin/custom/ggcommercewebservices/web/src/si/zenlab/v2/controller",
+                search = "value =.*",
+              },
+              facades = {
+                dir = "~/goHy2/core-customize/hybris/bin/custom/gorenje/ggfacades/src/si/zenlab/gg/facades/impl",
+                search = "public.*",
+              },
+              DAOs = {
+                dir = "~/goHy2/core-customize/hybris/bin/custom/gorenje/ggcore/src/si/zenlab/gg/core/daos/impl",
+                search = "public.*",
+              },
+              populators = {
+                dir = "~/goHy2/core-customize/hybris/bin/custom/gorenje/ggfacades/src/si/zenlab/gg/facades/populators",
+                search = "public class.*",
+              },
+            }
+            Snacks.picker.grep({
+              dirs = { searches[choice].dir },
+              search = searches[choice].search,
+            })
+          end
+        end)
+      end,
+      desc = "[S]earch [H]ybris",
     },
   },
 }
