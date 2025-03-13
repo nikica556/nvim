@@ -27,6 +27,7 @@ vim.keymap.set("n", "<leader>x", ":.lua<CR>")
 vim.keymap.set("v", "<leader>x", ":lua<CR>")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "^", "<C-^>")
 vim.keymap.set("n", "<Esc>", "<CMD>nohlsearch<CR>")
 
 -- [[ Basic Autocommands ]]
