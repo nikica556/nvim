@@ -97,6 +97,14 @@ return {
       desc = "[S]earch [Q]uickfix",
     },
     {
+      "<leader>su",
+      function()
+        Snacks.picker.undo()
+      end,
+      desc = "Undo History",
+    },
+    -- LSP
+    {
       "gd",
       function()
         Snacks.picker.lsp_definitions()
@@ -153,6 +161,7 @@ return {
       end,
       desc = "LSP Workspace Symbols",
     },
+    -- CUSTOM HYBRIS SEARCH
     {
       "<leader>sh",
       function()

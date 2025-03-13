@@ -19,6 +19,7 @@ return {
         "sql",
         "java",
         "rust",
+        "groovy",
       },
 
       sync_install = false,
