@@ -49,6 +49,13 @@ return {
       desc = "[S]earch [C]hanges",
     },
     {
+      "<leader>sb",
+      function()
+        Snacks.picker.git_branches()
+      end,
+      desc = "[S]earch [B]rances",
+    },
+    {
       "<leader>sr",
       function()
         Snacks.picker.resume()
