@@ -17,6 +17,12 @@ return { -- Autoformat
         lsp_format = lsp_format_opt,
       }
     end,
+    formatters = {
+      sleek = {
+        command = "sleek",
+        args = { "-i", "2" },
+      },
+    },
     formatters_by_ft = {
       lua = { "stylua" },
       html = { "prettier" },
@@ -24,6 +30,7 @@ return { -- Autoformat
       javascript = { "prettier" },
       htmlangular = { "prettier" },
       scss = { "prettier" },
+      sql = { "sleek" },
     },
   },
 }

@@ -19,6 +19,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.conceallevel = 1
 vim.opt.splitbelow = true
+vim.opt.confirm = true
 
 -- [[ Basic Keymaps ]]
 
@@ -27,6 +28,8 @@ vim.keymap.set("n", "<leader>x", ":.lua<CR>")
 vim.keymap.set("v", "<leader>x", ":lua<CR>")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzz")
+vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("n", "^", "<C-^>")
 vim.keymap.set("n", "<Esc>", "<CMD>nohlsearch<CR>")
 

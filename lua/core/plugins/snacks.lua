@@ -3,6 +3,12 @@ return {
   ---@type snacks.Config
   opts = {
     picker = {
+      formatters = {
+        file = {
+          truncate = 100,
+          filename_first = true,
+        },
+      },
       win = {
         input = {
           keys = {
@@ -17,7 +23,6 @@ return {
         notify = false,
       },
     },
-    notifier = {},
   },
   keys = {
     {

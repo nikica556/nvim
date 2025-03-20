@@ -33,6 +33,9 @@ require("lazy").setup({
       })
       vim.cmd.colorscheme("tokyonight")
     end,
+    opts = {
+      change_detection = { enabled = false },
+    },
   },
   { import = "core.plugins.lsp" },
   { import = "core.plugins" },

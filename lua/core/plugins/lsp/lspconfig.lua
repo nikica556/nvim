@@ -40,6 +40,9 @@ return {
         map("<leader>e", vim.diagnostic.open_float, "Show [E]rrors")
         map("K", vim.lsp.buf.hover, "Hover Documentation")
         map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+        map("<leader>i", function()
+          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
+        end, "Toggle [I]nlay Hints")
       end,
     })
 
@@ -58,6 +61,7 @@ return {
     vim.list_extend(ensure_installed, {
       "stylua", -- Used to format Lua code
       "prettier",
+      "sleek",
     })
 
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
