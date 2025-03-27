@@ -55,13 +55,22 @@ return {
       angularls = {},
       eslint = {},
       rust_analyzer = {},
+      groovyls = {
+        filetypes = { "groovy" },
+        settings = {
+          groovy = {
+            classpath = vim.split(vim.env.GROOVY_CLASSPATH or "", ":"),
+          },
+        },
+      },
     }
 
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
-      "stylua", -- Used to format Lua code
+      "stylua",
       "prettier",
       "sleek",
+      "npm-groovy-lint",
     })
 
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

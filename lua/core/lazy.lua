@@ -38,5 +38,6 @@ require("lazy").setup({
     },
   },
   { import = "core.plugins.lsp" },
+  { import = "core.plugins.treesitter" },
   { import = "core.plugins" },
 })

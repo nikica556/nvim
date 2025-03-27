@@ -21,6 +21,10 @@ vim.opt.conceallevel = 1
 vim.opt.splitbelow = true
 vim.opt.confirm = true
 
+-- [[ Virtual text ]]
+
+vim.diagnostic.config({ virtual_text = true })
+
 -- [[ Basic Keymaps ]]
 
 vim.keymap.set("n", "<leader><leader>x", "<CMD>source %<CR>")

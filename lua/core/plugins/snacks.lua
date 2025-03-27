@@ -23,6 +23,7 @@ return {
         notify = false,
       },
     },
+    scope = {},
   },
   keys = {
     {
@@ -47,11 +48,11 @@ return {
       desc = "[S]earch [F]iles",
     },
     {
-      "<leader>sc",
+      "<leader>sd",
       function()
         Snacks.picker.git_diff()
       end,
-      desc = "[S]earch [C]hanges",
+      desc = "[S]earch [D]iffs",
     },
     {
       "<leader>sb",
@@ -104,11 +105,11 @@ return {
       mode = { "n", "x" },
     },
     {
-      "<leader>sd",
+      "<leader>se",
       function()
         Snacks.picker.diagnostics()
       end,
-      desc = "[S]earch [D]iagnostics",
+      desc = "[S]earch [E]rrors",
     },
     {
       "<leader>sq",
