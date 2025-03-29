@@ -5,53 +5,54 @@ return {
     local lualine = require("lualine")
 
     local colors = {
-      blue = "#82AAFF", -- Light blue, more in line with TokyoNight's style
-      green = "#4fd6be", -- Aquamarine green, more subtle
-      violet = "#BB80B3", -- Muted violet to maintain a consistent look with TokyoNight
-      yellow = "#ff966c", -- Light yellowish tone, more refined
-      red = "#F28FAD", -- Soft red, keeping the TokyoNight vibe
-      fg = "#D0D0D0", -- Light foreground for contrast
-      bg = "NONE", -- Darker background, as seen in TokyoNight
-      inactive_bg = "#212330", -- Slightly lighter dark background for inactive elements
+      black = "#000000",
+      blue = "#82AAFF",
+      green = "#4fd6be",
+      violet = "#BB80B3",
+      yellow = "#ff966c",
+      red = "#F28FAD",
+      fg = "#D0D0D0",
+      bg = nil,
     }
 
     local my_lualine_theme = {
       normal = {
-        a = { bg = colors.blue, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
+        a = { bg = colors.blue, fg = colors.black, gui = "bold" },
+        b = { bg = colors.black, fg = colors.fg },
+        c = { bg = colors.black, fg = colors.fg },
       },
       insert = {
-        a = { bg = colors.green, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
+        a = { bg = colors.green, fg = colors.black, gui = "bold" },
+        b = { bg = colors.black, fg = colors.fg },
+        c = { bg = colors.black, fg = colors.fg },
       },
       visual = {
-        a = { bg = colors.violet, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
+        a = { bg = colors.violet, fg = colors.black, gui = "bold" },
+        b = { bg = colors.black, fg = colors.fg },
+        c = { bg = colors.black, fg = colors.fg },
       },
       command = {
-        a = { bg = colors.yellow, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
+        a = { bg = colors.yellow, fg = colors.black, gui = "bold" },
+        b = { bg = colors.black, fg = colors.fg },
+        c = { bg = colors.black, fg = colors.fg },
       },
       replace = {
-        a = { bg = colors.red, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
+        a = { bg = colors.red, fg = colors.black, gui = "bold" },
+        b = { bg = colors.black, fg = colors.fg },
+        c = { bg = colors.black, fg = colors.fg },
       },
       inactive = {
-        a = { bg = colors.inactive_bg, fg = colors.semilightgray, gui = "bold" },
-        b = { bg = colors.inactive_bg, fg = colors.semilightgray },
-        c = { bg = colors.inactive_bg, fg = colors.semilightgray },
+        a = { bg = colors.black, fg = colors.semilightgray, gui = "bold" },
+        b = { bg = colors.black, fg = colors.semilightgray },
+        c = { bg = colors.black, fg = colors.semilightgray },
       },
     }
 
-    -- configure lualine with modified theme
     lualine.setup({
       options = {
         theme = my_lualine_theme,
+        section_separators = " ",
+        component_separators = "|",
       },
     })
   end,
