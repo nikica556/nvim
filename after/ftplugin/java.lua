@@ -1,42 +1,79 @@
-local gotoDef = function()
-  local dir_path = "~/goHy2/core-customize/hybris/bin/custom/gorenje/ggfacades/src/si/zenlab/gg/facades/impl"
-  local word = vim.fn.expand("<cword>")
+local config = {
+  cmd = {
+    -- 💀
+    "/Library/Java/JavaVirtualMachines/sapmachine-21-ea.jdk/Contents/Home/bin/java", -- or '/path/to/java21_or_newer/bin/java'
+    -- depends on if `java` is in your $PATH env variable and if it points to the right version.
 
-  local cursor_pos = vim.api.nvim_win_get_cursor(0) -- Get cursor position (row, col)
-  local row, col = cursor_pos[1], cursor_pos[2]
-  local line = vim.api.nvim_buf_get_lines(0, row - 1, row, false)[1]
-  local start_col = math.max(0, col - 20)
-  local substring = line:sub(start_col + 1, col + 1) -- Lua uses 1-based indexing
-  local fullstring = substring .. word
+    "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+    "-Dosgi.bundles.defaultStartLevel=4",
+    "-Declipse.product=org.eclipse.jdt.ls.core.product",
+    "-Dlog.protocol=true",
+    "-Dlog.level=ALL",
+    "-Xmx2g",
+    "--add-modules=ALL-SYSTEM",
+    "--add-opens",
+    "java.base/java.util=ALL-UNNAMED",
+    "--add-opens",
+    "java.base/java.lang=ALL-UNNAMED",
 
-  if string.find(fullstring, "WsDTO") then
-    dir_path =
-      "~/goHy2/core-customize/hybris/bin/custom/ggcommercewebservices/resources ~/goHy2/core-customize/hybris/bin/custom/ggcommercewebservices/web/webroot/WEB-INF/config/v2"
-    print("WSDTO")
-  elseif string.find(fullstring, "facade") then
-    dir_path = "~/goHy2/core-customize/hybris/bin/custom/gorenje/ggfacades/src/si/zenlab/gg/facades/impl"
-  elseif string.find(fullstring, "Service") then
-    dir_path = "~/goHy2/core-customize/hybris/bin/custom/gorenje/ggcore/src/si/zenlab/gg/core/service/impl"
-  elseif string.find(fullstring, "DAO") then
-    dir_path = "~/goHy2/core-customize/hybris/bin/custom/gorenje/ggcore/src/si/zenlab/gg/core/daos/impl"
-  end
+    -- 💀
+    "-jar",
+    vim.fn.expand(
+      "~/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.1100.v20250306-0509.jar"
+    ),
+    -- "/path/to/jdtls_install_location/plugins/org.eclipse.equinox.launcher_VERSION_NUMBER.jar",
+    -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
+    -- Must point to the                                                     Change this to
+    -- eclipse.jdt.ls installation                                           the actual version
 
-  local cmd = string.format("rg -l %s %s", vim.fn.shellescape(word), dir_path)
-  local result = vim.fn.systemlist(cmd)
+    -- 💀
+    "-configuration",
+    vim.fn.expand("~/.local/share/nvim/mason/packages/jdtls/config_mac_arm"),
+    -- "/path/to/jdtls_install_location/config_SYSTEM",
+    -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
+    -- Must point to the                      Change to one of `linux`, `win` or `mac`
+    -- eclipse.jdt.ls installation            Depending on your system.
 
-  if #result == 0 then
-    print("No occurences found")
-    return
-  end
+    -- 💀
+    -- See `data directory configuration` section in the README
+    "-data",
+    vim.fn.expand("~/.jdtls_workspace"),
+  },
 
-  vim.cmd("edit " .. vim.fn.fnameescape(result[1]))
-  if string.find(word, "WsDTO") then
-    vim.fn.search("\\<" .. word .. "\\>")
-  else
-    vim.fn.search(" \\zs\\<" .. word .. "\\>")
-  end
-end
+  -- 💀
+  -- This is the default if not provided, you can remove it. Or adjust as needed.
+  -- One dedicated LSP server & client will be started per unique root_dir
+  --
+  -- vim.fs.root requires Neovim 0.10.
+  -- If you're using an earlier version, use: require('jdtls.setup').find_root({'.git', 'mvnw', 'gradlew'}),
+  -- root_dir = vim.fs.root(0, { ".project", "mvnw", "gradlew" }),
+  root_dir = vim.fn.expand("~/goHy2/core-customize/hybris/bin/custom/ggcommercewebservices/"),
 
-vim.keymap.set("n", "gd", function()
-  gotoDef()
-end, { noremap = true, silent = true })
+  -- Here you can configure eclipse.jdt.ls specific settings
+  -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
+  -- for a list of options
+  settings = {
+    java = {
+      project = {
+        referencedLibraries = {
+          "/Users/nikkorosec/goHy2/hybris/bin/platform/ext/core/lib/*.jar",
+          "/Users/nikkorosec/goHy2/hybris/bin/modules/web-services-commons/webservicescommons/bin/webservicescommonsserver.jar",
+        },
+      },
+    },
+  },
+
+  -- Language server `initializationOptions`
+  -- You need to extend the `bundles` with paths to jar files
+  -- if you want to use additional eclipse.jdt.ls plugins.
+  --
+  -- See https://github.com/mfussenegger/nvim-jdtls#java-debug-installation
+  --
+  -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
+  init_options = {
+    bundles = {},
+  },
+}
+-- This starts a new client & server,
+-- or attaches to an existing client & server depending on the `root_dir`.
+require("jdtls").start_or_attach(config)

@@ -14,6 +14,7 @@ return {
     { "williamboman/mason.nvim", opts = {} },
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
+    "mfussenegger/nvim-jdtls",
     {
       "j-hui/fidget.nvim",
       opts = {
@@ -53,7 +54,7 @@ return {
       lua_ls = {},
       ts_ls = {},
       angularls = {},
-      eslint = {},
+      -- eslint = {},
       rust_analyzer = {},
       groovyls = {
         filetypes = { "groovy" },
