@@ -9,7 +9,7 @@ local function diagnose(args)
     return
   end
 
-  local disable_filetypes = { rust = true }
+  local disable_filetypes = { rust = true, impex = true }
 
   -- don't diagnose strange stuff
   if not vim.api.nvim_buf_is_valid(args.buf) or disable_filetypes[vim.bo[args.buf].filetype] then
