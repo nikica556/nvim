@@ -83,7 +83,7 @@ return {
       desc = "Search for Plugin Spec",
     },
     {
-      "<leader>sH",
+      "<leader>sh",
       function()
         Snacks.picker.help()
       end,
@@ -163,29 +163,15 @@ return {
       desc = "Goto T[y]pe Definition",
     },
     {
-      "<leader>ss",
+      "<leader>sS",
       function()
         Snacks.picker.lsp_symbols()
       end,
       desc = "LSP Symbols",
     },
-    {
-      "<leader>sS",
-      function()
-        Snacks.picker.lsp_workspace_symbols()
-      end,
-      desc = "LSP Workspace Symbols",
-    },
-    {
-      "<leader>sS",
-      function()
-        Snacks.picker.lsp_workspace_symbols()
-      end,
-      desc = "LSP Workspace Symbols",
-    },
     -- CUSTOM HYBRIS SEARCH
     {
-      "<leader>sh",
+      "<leader>ss",
       function()
         local choices = {
           "facades",

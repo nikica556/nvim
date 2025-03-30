@@ -20,6 +20,7 @@ vim.opt.shiftwidth = 2
 vim.opt.conceallevel = 1
 vim.opt.splitbelow = true
 vim.opt.confirm = true
+vim.opt.updatetime = 200
 
 -- [[ Virtual text ]]
 
