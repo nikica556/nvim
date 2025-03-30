@@ -12,7 +12,7 @@ local function diagnose(args)
   local disable_filetypes = { rust = true }
 
   -- don't diagnose strange stuff
-  if vim.bo[args.buf].buftype ~= "" or disable_filetypes[vim.bo[args.buf].filetype] then
+  if not vim.api.nvim_buf_is_valid(args.buf) or disable_filetypes[vim.bo[args.buf].filetype] then
     return
   end
 
