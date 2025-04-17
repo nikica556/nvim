@@ -17,7 +17,6 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
-vim.opt.conceallevel = 1
 vim.opt.splitbelow = true
 vim.opt.confirm = true
 vim.opt.updatetime = 200
@@ -28,7 +27,6 @@ vim.diagnostic.config({ virtual_text = true })
 
 -- [[ Basic Keymaps ]]
 
-vim.keymap.set("n", "<leader><leader>x", "<CMD>source %<CR>")
 vim.keymap.set("n", "<leader>x", ":.lua<CR>")
 vim.keymap.set("v", "<leader>x", ":lua<CR>")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -36,7 +34,14 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("n", "^", "<C-^>")
-vim.keymap.set("n", "<Esc>", "<CMD>nohlsearch<CR>")
+
+vim.keymap.set("n", "<leader><leader>x", function()
+  vim.api.nvim_command("source %")
+end)
+
+vim.keymap.set("n", "<Esc>", function()
+  vim.api.nvim_command("nohlsearch")
+end)
 
 -- [[ Basic Autocommands ]]
 

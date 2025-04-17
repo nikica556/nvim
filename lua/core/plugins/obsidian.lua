@@ -1,24 +1,40 @@
 return {
-  "epwalsh/obsidian.nvim",
+  "obsidian-nvim/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
   lazy = true,
   ft = "markdown",
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
-  config = function()
-    require("obsidian").setup({
-      workspaces = {
-        {
-          name = "personal",
-          path = "~/vaults/personal",
-        },
+  opts = {
+    workspaces = {
+      {
+        name = "personal",
+        path = "~/vaults/personal",
       },
-    })
-
-    -- Custom Keymaps
-    vim.keymap.set("n", "<leader>on", "<CMD>ObsidianNew<CR>", { desc = "[O]bsidian [N]ew Note" })
-    vim.keymap.set("n", "<leader>ob", "<CMD>ObsidianBacklinks<CR>", { desc = "[O]bsidian [B]acklinks" })
-    vim.keymap.set("n", "<leader>ol", "<CMD>ObsidianLinks<CR>", { desc = "[O]bsidian [L]inks" })
-  end,
+    },
+  },
+  keys = {
+    {
+      "<leader>on",
+      function()
+        vim.api.nvim_command("ObsidianNew")
+      end,
+      desc = "[O]bsidian [N]ew Note",
+    },
+    {
+      "<leader>ob",
+      function()
+        vim.api.nvim_command("ObsidianBacklinks")
+      end,
+      desc = "[O]bsidian [B]acklinks",
+    },
+    {
+      "<leader>ol",
+      function()
+        vim.api.nvim_command("ObsidianLinks")
+      end,
+      desc = "[O]bsidian [L]inks",
+    },
+  },
 }
