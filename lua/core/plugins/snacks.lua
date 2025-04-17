@@ -169,6 +169,16 @@ return {
       end,
       desc = "LSP Symbols",
     },
+    {
+      "<leader>sm",
+      function()
+        Snacks.picker.marks({
+          global = true,
+          ["local"] = false,
+        })
+      end,
+      desc = "Marks",
+    },
     -- CUSTOM HYBRIS SEARCH
     {
       "<leader>ss",
