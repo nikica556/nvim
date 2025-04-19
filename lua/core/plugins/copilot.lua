@@ -14,7 +14,7 @@ return {
             debounce = 75,
             trigger_on_accept = true,
             keymap = {
-              accept = "ł",
+              accept = "ł", -- <A-l>
             },
           },
         },
@@ -26,8 +26,8 @@ return {
       agent = "copilot",
       mappings = {
         reset = {
-          normal = "‘",
-          insert = "‘",
+          normal = "‘", -- <A-x>
+          insert = "‘", -- <A-x>
         },
         submit_prompt = {
           normal = "<Esc>",
