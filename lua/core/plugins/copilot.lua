@@ -2,14 +2,32 @@ return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     dependencies = {
-      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+      {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        opts = {
+          suggestion = {
+            enabled = true,
+            auto_trigger = true,
+            hide_during_completion = true,
+            debounce = 75,
+            trigger_on_accept = true,
+            keymap = {
+              accept = "ł",
+            },
+          },
+        },
+      },
+      { "nvim-lua/plenary.nvim", branch = "master" },
     },
     opts = {
+      model = "claude-3.7-sonnet",
+      agent = "copilot",
       mappings = {
         reset = {
-          normal = "<C-x>",
-          insert = "<C-x>",
+          normal = "‘",
+          insert = "‘",
         },
       },
     },
@@ -22,11 +40,11 @@ return {
         desc = "[C]opilot [C]hat",
       },
       {
-        "<leader>cs",
+        "<leader>sc",
         function()
           vim.api.nvim_command("CopilotChatModels")
         end,
-        desc = "[C]opilot Model[s]",
+        desc = "[S]earch [C]opilot Models",
       },
       {
         "<leader>cm",
