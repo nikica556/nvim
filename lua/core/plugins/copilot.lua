@@ -29,6 +29,10 @@ return {
           normal = "‘",
           insert = "‘",
         },
+        submit_prompt = {
+          normal = "<Esc>",
+          insert = "<C-s>",
+        },
       },
     },
     keys = {
