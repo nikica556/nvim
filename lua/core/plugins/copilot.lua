@@ -30,8 +30,12 @@ return {
           insert = "‘", -- <A-x>
         },
         submit_prompt = {
-          normal = "<Esc>",
-          insert = "<C-s>",
+          normal = "<CR>",
+          insert = "<CR>",
+        },
+        accept_diff = {
+          normal = "ł", -- <A-l>
+          insert = "ł", -- <A-l>
         },
       },
     },
