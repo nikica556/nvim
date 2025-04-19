@@ -17,6 +17,9 @@ return {
               accept = "ł", -- <A-l>
             },
           },
+          panel = {
+            enabled = false,
+          },
         },
       },
       { "nvim-lua/plenary.nvim", branch = "master" },
@@ -28,10 +31,6 @@ return {
         reset = {
           normal = "‘", -- <A-x>
           insert = "‘", -- <A-x>
-        },
-        submit_prompt = {
-          normal = "<CR>",
-          insert = "<CR>",
         },
         accept_diff = {
           normal = "ł", -- <A-l>
