@@ -32,6 +32,10 @@ return {
           normal = "‘", -- <A-x>
           insert = "‘", -- <A-x>
         },
+        submit_prompt = {
+          normal = "<A-CR>", -- <C-CR> aslo works
+          insert = "<A-CR>", -- <C-CR> aslo works
+        },
         accept_diff = {
           normal = "ł", -- <A-l>
           insert = "ł", -- <A-l>
@@ -45,6 +49,7 @@ return {
           vim.api.nvim_command("CopilotChat")
         end,
         desc = "[C]opilot [C]hat",
+        mode = { "n", "v" },
       },
       {
         "<leader>sc",
@@ -59,6 +64,7 @@ return {
           vim.api.nvim_command("CopilotChatCommit")
         end,
         desc = "[C]opilot [C]ommit",
+        mode = { "n", "v" },
       },
     },
   },
