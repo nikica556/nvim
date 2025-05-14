@@ -55,6 +55,7 @@ return {
       angularls = {},
       -- eslint = {},
       rust_analyzer = {},
+      jq = {},
       groovyls = {
         filetypes = { "groovy" },
         settings = {
