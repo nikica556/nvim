@@ -55,6 +55,9 @@ vim.api.nvim_command("command! Wqa wqa")
 vim.api.nvim_command("command! WQa wqa")
 vim.api.nvim_command("command! WQA wqa")
 
+-- [[ Usefull Macros ]]
+vim.fn.setreg("s", "/p1\rgcckgcc/hisense-si\rgc2k")
+
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking text",
