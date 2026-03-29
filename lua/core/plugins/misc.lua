@@ -1,6 +1,7 @@
 return {
-  { "christoomey/vim-tmux-navigator" },
   { "tpope/vim-fugitive" },
-  { "NvChad/nvim-colorizer.lua", opts = {} },
-  { "akinsho/git-conflict.nvim", version = "*", config = true },
+  { dir = "~/.local/share/nvim/lazy/zoxide.nvim", cmd = "Z", opts = {} },
+  { "norcalli/nvim-colorizer.lua", opts = {
+    haskell = { names = false },
+  } },
 }

@@ -15,6 +15,7 @@ local function diagnose(args)
     htmlangular = true,
     typescript = true,
     javascript = true,
+    c = true,
   }
 
   -- don't diagnose strange stuff

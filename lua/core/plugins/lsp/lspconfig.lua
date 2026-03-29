@@ -14,7 +14,6 @@ return {
     { "williamboman/mason.nvim", opts = {} },
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    "mfussenegger/nvim-jdtls",
     {
       "j-hui/fidget.nvim",
       opts = {
@@ -40,6 +39,7 @@ return {
         map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
         map("<leader>e", vim.diagnostic.open_float, "Show [E]rrors")
         map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+        map("gi", vim.lsp.buf.implementation, "[G]oto [D]eclaration")
         map("<leader>i", function()
           vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
         end, "Toggle [I]nlay Hints")
@@ -51,9 +51,28 @@ return {
 
     local servers = {
       lua_ls = {},
-      ts_ls = {},
+      hls = {},
+      ts_ls = {
+        settings = {
+          typescript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all'
+              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+              includeInlayVariableTypeHints = true,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayEnumMemberValueHints = true,
+            },
+          },
+        },
+      },
       angularls = {},
       -- eslint = {},
+      clangd = {
+        cmd = { "clangd", "--compile-commands-dir=." },
+      },
       rust_analyzer = {},
       jq = {},
       groovyls = {
@@ -68,10 +87,13 @@ return {
 
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
+      { "angular-language-server", version = "20.2.1" },
       "stylua",
       "prettier",
       "sleek",
       "npm-groovy-lint",
+      "clang-format",
+      "ormolu",
     })
 
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

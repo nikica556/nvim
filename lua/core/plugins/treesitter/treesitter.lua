@@ -21,13 +21,15 @@ return {
         "java",
         "rust",
         "groovy",
+        "llvm",
+        "haskell",
       },
 
       sync_install = false,
       highlight = {
         enable = true,
         disable = function(_, buf)
-          local max_filesize = 100 * 4096 -- 400 KB
+          local max_filesize = 100 * 2048 -- 400 KB
           local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
           if ok and stats and stats.size > max_filesize then
             return true

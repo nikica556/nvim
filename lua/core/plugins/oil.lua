@@ -2,7 +2,6 @@ return {
   {
     "stevearc/oil.nvim",
     dependencies = {
-      "refractalize/oil-git-status.nvim",
       "nvim-tree/nvim-web-devicons",
     },
     opts = {

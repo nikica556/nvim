@@ -1,6 +1,5 @@
 return {
   "folke/snacks.nvim",
-  ---@type snacks.Config
   opts = {
     picker = {
       formatters = {
@@ -45,7 +44,7 @@ return {
       function()
         Snacks.picker.files({ cwd = "~/.config/nvim" })
       end,
-      desc = "[S]earch [F]iles",
+      desc = "[S]earch [N]vim",
     },
     {
       "<leader>sd",
@@ -95,6 +94,13 @@ return {
         Snacks.picker.files({ cwd = "~/vaults/personal" })
       end,
       desc = "[S]earch [O]bsidian",
+    },
+    {
+      "<leader>sc",
+      function()
+        Snacks.picker.files({ cwd = "~/.copilot/skills" })
+      end,
+      desc = "[S]earch [C]opilot Skills",
     },
     {
       "<leader>sw",
@@ -178,6 +184,13 @@ return {
         })
       end,
       desc = "Marks",
+    },
+    {
+      "<leader>,",
+      function()
+        Snacks.picker.buffers()
+      end,
+      desc = "Buffers",
     },
     -- CUSTOM HYBRIS SEARCH
     {

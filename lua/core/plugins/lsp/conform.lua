@@ -5,7 +5,7 @@ return { -- Autoformat
   opts = {
     notify_on_error = false,
     format_on_save = function(bufnr)
-      local disable_filetypes = { c = true, cpp = true }
+      local disable_filetypes = { c = true, cpp = true, java = true }
       local lsp_format_opt
       if disable_filetypes[vim.bo[bufnr].filetype] then
         lsp_format_opt = "never"
@@ -17,24 +17,29 @@ return { -- Autoformat
         lsp_format = lsp_format_opt,
       }
     end,
-    formatters = {
-      sleek = {
-        command = "sleek",
-        args = { "-i", "2" },
-      },
-    },
+
     formatters_by_ft = {
       lua = { "stylua" },
       html = { "prettier" },
       typescript = { "prettier" },
+      typescriptreact = { "prettier" },
       javascript = { "prettier" },
+      javascriptreact = { "prettier" },
       htmlangular = { "prettier" },
       htmldjango = { "prettier" },
       scss = { "prettier" },
       css = { "prettier" },
       sql = { "sleek" },
       json = { "jq" },
-      groovy = { "npm-groovy-lint" },
+      c = { "clang-format" },
+      cpp = { "clang-format" },
+      haskell = { "ormolu" },
+      -- groovy = { "npm-groovy-lint" },
+    },
+    formatters = {
+      -- prettier = {
+      -- prepend_args = { "--plugin", "/opt/homebrew/lib/node_modules/prettier-plugin-organize-imports/index.js" },
+      -- },
     },
   },
 }
